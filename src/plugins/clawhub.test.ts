@@ -748,7 +748,7 @@ describe("installPluginFromClawHub", () => {
 
     const failure = expectInstallFailure(result);
     expect(failure.error).toBe(
-      'ClawHub artifact download for "demo@2026.3.22" is not available yet (ClawHub /api/v1/packages/demo/versions/2026.3.22/artifact/download failed (404): Not Found). Use "npm:demo@2026.3.22" for launch installs while ClawHub artifact routing is being rolled out.',
+      'ClawHub artifact download for "demo@2026.3.22" is not available yet (ClawHub /api/v1/packages/demo/versions/2026.3.22/artifact/download failed (404): Not Found).',
     );
     expect(archiveDownloadCall().artifact).toBe("clawpack");
     expect(installPluginFromArchiveMock).not.toHaveBeenCalled();
@@ -1126,7 +1126,7 @@ describe("installPluginFromClawHub", () => {
     const failure = expectInstallFailure(result);
     expect(failure.code).toBe(CLAWHUB_INSTALL_ERROR_CODE.MISSING_ARCHIVE_INTEGRITY);
     expect(failure.error).toBe(
-      'ClawHub package "demo@2026.3.22" does not expose a downloadable plugin artifact yet. Use "npm:demo@2026.3.22" for launch installs while ClawHub artifact routing is being rolled out.',
+      'ClawHub package "demo@2026.3.22" does not expose a downloadable plugin artifact yet.',
     );
     expect(downloadClawHubPackageArchiveMock).not.toHaveBeenCalled();
   });
@@ -1151,7 +1151,7 @@ describe("installPluginFromClawHub", () => {
     const failure = expectInstallFailure(result);
     expect(failure.code).toBe(CLAWHUB_INSTALL_ERROR_CODE.MISSING_ARCHIVE_INTEGRITY);
     expect(failure.error).toBe(
-      'ClawHub package "demo@2026.3.22" does not expose a downloadable plugin artifact yet. Use "npm:demo@2026.3.22" for launch installs while ClawHub artifact routing is being rolled out.',
+      'ClawHub package "demo@2026.3.22" does not expose a downloadable plugin artifact yet.',
     );
     expect(downloadClawHubPackageArchiveMock).not.toHaveBeenCalled();
   });

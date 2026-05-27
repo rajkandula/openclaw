@@ -390,14 +390,14 @@ function formatClawHubClawPackDownloadError(params: {
   if (!(params.error instanceof ClawHubRequestError)) {
     return message;
   }
-  return `ClawHub artifact download for "${params.packageName}@${params.version}" is not available yet (${message}). Use "npm:${params.packageName}@${params.version}" for launch installs while ClawHub artifact routing is being rolled out.`;
+  return `ClawHub artifact download for "${params.packageName}@${params.version}" is not available yet (${message}).`;
 }
 
 function formatClawHubMissingArtifactMetadataError(params: {
   packageName: string;
   version: string;
 }): string {
-  return `ClawHub package "${params.packageName}@${params.version}" does not expose a downloadable plugin artifact yet. Use "npm:${params.packageName}@${params.version}" for launch installs while ClawHub artifact routing is being rolled out.`;
+  return `ClawHub package "${params.packageName}@${params.version}" does not expose a downloadable plugin artifact yet.`;
 }
 
 function resolveRequestedVersion(params: {
@@ -1137,8 +1137,6 @@ export async function installPluginFromClawHub(
       timeoutMs: params.timeoutMs,
     });
   } catch (error) {
-    // Fix-me(clawhub): remove this npm hint once ClawHub ClawPack artifact
-    // routing is live for official package installs.
     return buildClawHubInstallFailure(
       expectedClawPackSha256
         ? formatClawHubClawPackDownloadError({
